@@ -1,0 +1,14 @@
+{
+  "name": "aj-runner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An original responsive three-track endless runner with keyboard and touch controls, rescue boards, power-ups, and animated day/night scenery.",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node tests/gameplay.cjs",
+    "build": "npm run check && node scripts/build.mjs"
+  },
+  "keywords": ["endless-runner", "canvas", "javascript", "browser-game", "mobile-game"]
+}

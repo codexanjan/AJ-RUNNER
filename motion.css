@@ -1,0 +1,34 @@
+body[data-scene="night"] .landing-art {
+  filter: saturate(.8) brightness(.55) hue-rotate(8deg);
+}
+
+body[data-scene="night"] .landing-art::after {
+  background:
+    linear-gradient(90deg, rgba(4, 18, 30, .9), rgba(13, 36, 53, .42) 60%, transparent),
+    linear-gradient(0deg, rgba(6, 25, 35, .96), transparent 30%);
+}
+
+body[data-mode="playing"] canvas {
+  animation: run-camera .36s linear infinite;
+}
+
+body[data-mode="playing"] .brand-lockup {
+  animation: hud-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes run-camera {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+@keyframes hud-pulse {
+  0%, 100% { opacity: .88; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-mode="playing"] canvas,
+  body[data-mode="playing"] .brand-lockup {
+    animation: none;
+  }
+}

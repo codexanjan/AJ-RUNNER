@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AJ RUNNER is a responsive original endless-runner web game with keyboard and touch controls."
+    />
+    <title>AJ RUNNER</title>
+    <link rel="stylesheet" href="experience.css" />
+    <link rel="stylesheet" href="motion.css" />
+    <link rel="stylesheet" href="extras.css" />
+    <link rel="stylesheet" href="startup.css?v=20260910-1" />
+  </head>
+  <body data-mode="ready">
+    <main class="game-shell" aria-label="AJ RUNNER game">
+      <div id="bootStatus" class="boot-status" role="status" aria-live="polite">
+        <h2 id="bootTitle">Loading the district...</h2>
+        <p id="bootMessage">Getting AJ ready to run.</p>
+        <button id="reloadGame" class="primary-button hidden" type="button">Reload game</button>
+        <noscript>This game needs JavaScript enabled in your browser.</noscript>
+      </div>
+      <section class="hud" aria-label="Game status">
+        <div class="brand-lockup" aria-label="AJ RUNNER">
+          <span class="brand-mark">AJ</span>
+          <span class="brand-name">RUNNER</span>
+        </div>
+        <div class="stat-strip">
+          <div class="stat">
+            <span>Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="stat">
+            <span>High</span>
+            <strong id="highScore">0</strong>
+          </div>
+          <div class="stat">
+            <span>Coins</span>
+            <strong id="coins">0</strong>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="soundButton" type="button" aria-label="Toggle sound">
+            <span id="soundIcon" aria-hidden="true">&#9835;</span>
+          </button>
+          <button class="pause-button" id="pauseButton" type="button" aria-label="Pause game" title="Pause game">Pause</button>
+        </div>
+      </section>
+
+      <section class="stage-wrap">
+        <canvas id="gameCanvas" width="960" height="1280" aria-label="AJ RUNNER play area"></canvas>
+
+        <div class="menu-panel" id="startScreen">
+          <div class="landing-art" aria-hidden="true"></div>
+          <nav class="landing-nav" aria-label="Game navigation"><span class="landing-logo">AJ<span> / RUNNER</span></span><span class="edition">THE RAIL DISTRICT</span></nav>
+          <div class="landing-copy">
+            <div class="hero-badge"><i></i> YOUR NEXT PERSONAL BEST STARTS HERE</div>
+            <h1>AJ<br><span>RUNNER</span></h1>
+            <p>Three tracks. One city.<br>Make every second count.</p>
+            <button class="primary-button" id="playButton" type="button">LET'S RUN <span aria-hidden="true">&#8599;</span></button>
+            <div class="scene-choice" role="group" aria-label="Time of day"><button type="button" data-scene="day" aria-pressed="true">Daybreak</button><button type="button" data-scene="night" aria-pressed="false">After Hours</button></div>
+            <button class="help-link" id="helpButton" type="button">How to play &#8594;</button>
+          </div>
+          <div class="landing-bottom"><div><small>01 / THE RUN</small><strong>Find your rhythm.</strong></div><div><small>02 / THE EDGE</small><strong>Shields &amp; magnets.</strong></div><div><small>03 / YOUR RECORD</small><strong id="landingBest">0 to beat.</strong></div></div>
+        </div>
+
+        <div class="dialog hidden" id="guideScreen" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+          <span class="hero-badge">WELCOME TO THE DISTRICT</span><h2 id="guideTitle">Your first run.</h2>
+          <div class="guide-actions"><div><b>&#8592; &#8594;</b><span>Change tracks</span></div><div><b>&#8593;</b><span>Jump barriers</span></div><div><b>&#8595;</b><span>Slide under gates</span></div></div>
+          <p>Use arrow keys, the on-screen arrows, or swipe. Trains must be dodged. Follow coins along the open track.</p>
+          <p class="board-tip">Tap Board or press B for 10 seconds of crash protection. One board per run.</p>
+          <button class="primary-button" id="guidePlay" type="button">Ready. Let's run! &#8594;</button><button class="text-button" id="guideClose" type="button">Back</button>
+        </div>
+
+        <div class="dialog hidden" id="pauseScreen" role="dialog" aria-modal="true" aria-labelledby="pauseTitle"><span class="hero-badge">TAKE A BREATHER</span><h2 id="pauseTitle">On pause.</h2><button class="primary-button" id="resumeButton" type="button">Keep Running &#8594;</button><button class="secondary-button" id="pauseRestart" type="button">Restart Run</button><button class="text-button" id="pauseHome" type="button">Back to District</button></div>
+
+        <div class="dialog hidden" id="gameOverScreen" role="dialog" aria-modal="true" aria-labelledby="overTitle">
+          <div class="hero-badge danger">Run complete</div>
+          <h2 id="overTitle">What a run.</h2>
+          <p id="finalStats">Score 0 · Coins 0</p>
+          <div id="runAwards" class="run-awards"></div>
+          <button class="primary-button" id="restartButton" type="button">Restart</button>
+          <button class="text-button" id="overHome" type="button">Back to District</button>
+        </div>
+      </section>
+
+      <div class="run-status"><span id="speed">28 km/h</span><span id="power">SHIELD OFF</span><span id="distance">0 m</span></div>
+      <div class="mission"><span id="missionText">COIN RUN / 0 OF 25</span><div><i id="missionProgress"></i></div></div>
+      <div class="toast" id="toast" role="status"></div>
+      <div class="bonus-strip" id="bonusStrip" aria-label="Active bonuses"></div>
+      <button class="board-button" id="boardButton" type="button" title="Activate rescue board (B)"><span aria-hidden="true">&#9671;</span> <span id="boardLabel">Board</span><small id="boardHint">1 available</small></button>
+      <section class="control-pad" aria-label="Touch controls">
+        <button class="control-button" id="leftButton" type="button" aria-label="Move left">←</button>
+        <div class="vertical-controls">
+          <button class="control-button" id="jumpButton" type="button" aria-label="Jump">↑</button>
+          <button class="control-button" id="slideButton" type="button" aria-label="Slide">↓</button>
+        </div>
+        <button class="control-button" id="rightButton" type="button" aria-label="Move right">→</button>
+      </section>
+    </main>
+
+    <script defer src="runner.js?v=20260910-1"></script>
+    <script defer src="district.js?v=20260910-1"></script>
+    <script defer src="extras.js?v=20260910-1"></script>
+    <script defer src="bootstrap.js?v=20260910-1"></script>
+  </body>
+</html>
