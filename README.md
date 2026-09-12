@@ -3,7 +3,7 @@
 An original, responsive three-track endless runner for the browser. Play as AJ,
 dodge trains, collect coins, and build score streaks through a changing rail district.
 
-[Source code](https://github.com/codexanjan/AJ-RUNNER) | [Report a bug](https://github.com/codexanjan/AJ-RUNNER/issues)
+[Play AJ RUNNER](https://aj-runner.vercel.app) | [Source code](https://github.com/codexanjan/AJ-RUNNER) | [Report a bug](https://github.com/codexanjan/AJ-RUNNER/issues)
 
 ![AJ RUNNER original landing artwork](key-art.png)
 
@@ -67,6 +67,12 @@ The build copies only public game assets into `dist/`. `index.html` also works
 directly from the source folder, without running the build.
 
 ## Deploy To Vercel
+
+Live production game: **https://aj-runner.vercel.app**
+
+The initial release was published directly with the Vercel CLI. Automatic GitHub
+deployments are not connected yet: the Vercel GitHub integration needs access to
+`codexanjan/AJ-RUNNER`. The live release works independently of that connection.
 
 Import `codexanjan/AJ-RUNNER` from GitHub into Vercel. Select the repository root,
 use the **Other** framework preset, and leave the settings from `vercel.json`:
