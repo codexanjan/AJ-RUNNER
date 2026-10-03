@@ -113,3 +113,13 @@ Scores are device-local and editable by the player; there is no online leaderboa
 or anti-cheat service. Gameplay uses stylized 2D perspective, not photorealistic 3D.
 No open-source license has been selected; no additional reuse rights are granted
 by this repository. See [CONTRIBUTING.md](CONTRIBUTING.md) and [CHANGELOG.md](CHANGELOG.md).
+
+---
+
+<div align="center">
+
+Made with ❤️ by [Anjan Shetty](https://github.com/codexanjan)
+
+[![GitHub](https://img.shields.io/badge/GitHub-codexanjan-181717?style=flat&logo=github)](https://github.com/codexanjan)
+
+</div>
